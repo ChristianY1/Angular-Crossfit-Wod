@@ -1,0 +1,40 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-10 offset-lg-1">
+      <div class="card">
+        <div class="card-body text-center">
+          <span>LISTADO DE PRODUCTOS</span>
+          <button class="btn btn-success float-end" routerLink="/crear-producto">Nuevo</button>
+
+          <table class="table table-striped mt-3">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Mode</th>
+                <th scope="col">Equipment</th>
+                <th scope="col">Exercises</th>
+                <th scope="col">Trainer Tips</th>
+                <th class="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let producto of listProductos">
+                <td>{{ producto.name }}</td>
+                <td>{{ producto.mode }}</td>
+                <td>{{ producto.equipment.join(', ') }}</td>
+                <td>{{ producto.exercises.join(', ') }}</td>
+                <td>{{ producto.trainerTips.join(', ') }}</td>
+                <td>
+                  <div  class="mb-3 d-flex">
+                    <button [routerLink]="['/editar-producto', producto.id]" class="btn btn-warning" (click)="updateProducto(producto.id)">Actualizar</button>
+                    <button class="btn btn-danger offset-lg-1" (click)="deletProducto(producto.id)">Eliminar </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
